@@ -1,0 +1,112 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block title %}Let Us Ball{% endblock %}
+{% block head %}
+{{super()}}
+
+{{fixes.ie8()}}
+{% endblock %}
+{% block styles %}
+{{super()}}
+<style>
+    body {
+        background-image: url({{ url_for('static', filename='images/background.jpg') }});
+    }
+</style>
+<style>
+    table tr td, table tr th{
+        background-color: rgba(211,211,211) !important;
+    }
+</style>
+<style>
+    @media all and (max-width: 1200px) { /* screen size until 1200px */
+        body {
+            font-size: 1.5em; /* 1.5x default size */
+        }
+    }
+    @media all and (max-width: 1000px) { /* screen size until 1000px */
+        body {
+            font-size: 1.2em; /* 1.2x default size */
+            }
+        }
+    @media all and (max-width: 500px) { /* screen size until 500px */
+        body {
+            font-size: 0.8em; /* 0.8x default size */
+        }
+    }
+
+
+</style>
+{% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Wescap Power Index</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+  </div><!-- /.container-fluid -->
+</nav>
+{% endblock %}
+
+{% block content %}
+{{super()}}
+    <div class="container-fluid">
+        <center><h1>WESCAP POWER INDEX</h1></center>
+        <center><h3>Presented by DigitalUnicorn</h3></center>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Player</th>
+                        <th>Gamertag</th>
+                        <th>WCPI</th>
+                        <th>Solo Kills Per Match</th>
+                        <th>Duo Kills Per Match</th>
+                        <th>Squad Kills Per Match</th>
+			            <th>Solo Matches Played</th>
+                        <th>Duo Matches Played</th>
+                        <th>Squad Matches Played</th>
+                        <th>Total Matches Played</th>
+                        <th>Solo Wins</th>
+                        <th>Duo Wins</th>
+                        <th>Squad Wins</th>
+                        <th>Total Wins</th>
+                        <th>Solo Win Percentage</th>
+                        <th>Duo Win Percentage</th>
+                        <th>Squad Win Percentage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in json %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{item['name']}}</td>
+                        <td>{{item['gamer_tag']}}
+                        <td>{{item['wcpi']}}</td>
+                        <td>{{item['solo_kpg']}}</td>
+                        <td>{{item['duo_kpg']}}</td>
+                        <td>{{item['squad_kpg']}}</td>
+                        <td>{{item['solo_matches']}}</td>
+                        <td>{{item['duo_matches']}}</td>
+                        <td>{{item['squad_matches']}}</td>
+                        <td>{{item['matches']}}</td>
+                        <td>{{item['solo_wins']}}</td>
+                        <td>{{item['duo_wins']}}</td>
+                        <td>{{item['squad_wins']}}</td>
+                        <td>{{item['total_wins']}}</td>
+                        <td>{{(item['solo_win_percentage'] * 100)|round(2)}}</td>
+                        <td>{{(item['duo_win_percentage'] * 100)|round(2)}}</td>
+                        <td>{{(item['squad_win_percentage'] * 100)|round(2)}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

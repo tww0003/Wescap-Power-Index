@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+{{super()}}
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+{% endblock %}
+
+{% block navbar %}
+{{ macros.render_navbar('/') }}
+{% endblock %}
+
+{% block content %}
+{{super()}}
+<center><iframe allowfullscreen="true" src="https://mixer.com/embed/player/Sgt_P_Semon?disableLowLatency=1" width="620" height="349"> </iframe></center>
+{% endblock %}
+

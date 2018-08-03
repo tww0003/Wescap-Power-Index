@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+{{super()}}
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+{% endblock %}
+
+{% block navbar %}
+{{ macros.render_navbar('/') }}
+{% endblock %}
+
+{% block content %}
+{{super()}}
+<center>
+    <div class="row">
+        <div class="col-md">
+            <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + json[0]['name'] +'.jpg') }}" width="350" height="350" /></center>
+            <center><h3>{{json[0]['name']}}</h3></center>
+        </div>
+    </div>
+</center>
+{{ macros.render_wcpi(json) }}
+{% endblock %}
+

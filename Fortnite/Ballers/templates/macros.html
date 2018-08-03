@@ -1,0 +1,76 @@
+{% macro render_navbar(href) %}
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href={{href}}>Wescap Power Index</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            <li><a href="/squad">Current A Team</a></li>
+            <li><a href="/results">Season 4 Final Scores</a></li>
+            <li><a href="/formula">WCPI Formula</a></li>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+{% endmacro %}
+{% macro render_wcpi(json) %}
+    <div class="container-fluid">
+        <div class="panel panel-default">
+                <table class="table table-striped table-responsive" style="background-color: white">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Player</th>
+                            <th>Gamertag</th>
+                            <th>WCPI</th>
+                            <th>Solo Kills Per Match</th>
+                            <th>Duo Kills Per Match</th>
+                            <th>Squad Kills Per Match</th>
+                            <th>Solo Matches Played</th>
+                            <th>Duo Matches Played</th>
+                            <th>Squad Matches Played</th>
+                            <th>Total Matches Played</th>
+                            <th>Solo Wins</th>
+                            <th>Duo Wins</th>
+                            <th>Squad Wins</th>
+                            <th>Total Wins</th>
+                            <th>Solo Win Percentage</th>
+                            <th>Duo Win Percentage</th>
+                            <th>Squad Win Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in json %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td><a href="/user?username={{item['name']}}">{{item['name']}}</a></td>
+                            <td>{{item['gamer_tag']}}
+                            <td>{{item['wcpi_score']}}</td>
+                            <td>{{item['solo_kpg']}}</td>
+                            <td>{{item['duo_kpg']}}</td>
+                            <td>{{item['squad_kpg']}}</td>
+                            <td>{{item['solo_matches']}}</td>
+                            <td>{{item['duo_matches']}}</td>
+                            <td>{{item['squad_matches']}}</td>
+                            <td>{{item['matches']}}</td>
+                            <td>{{item['solo_wins']}}</td>
+                            <td>{{item['duo_wins']}}</td>
+                            <td>{{item['squad_wins']}}</td>
+                            <td>{{item['total_wins']}}</td>
+                            <td>{{(item['solo_win_percentage'] * 100)|round(2)}}</td>
+                            <td>{{(item['duo_win_percentage'] * 100)|round(2)}}</td>
+                            <td>{{(item['squad_win_percentage'] * 100)|round(2)}}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                </table>
+        </div>
+    </div>
+
+{% endmacro %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+{{super()}}
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+{% endblock %}
+
+{% block navbar %}
+{{ macros.render_navbar('/') }}
+{% endblock %}
+
+{% block content %}
+{{super()}}
+<center><h1>WESCAP POWER INDEX</h1></center>
+<center><h3>Presented by DigitalUnicorn</h3></center>
+{{ macros.render_wcpi(json) }}
+{% endblock %}

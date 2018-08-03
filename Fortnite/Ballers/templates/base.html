@@ -1,0 +1,37 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% block title %}Let Us Ball{% endblock %}
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+<link rel="shortcut icon" href="{{ url_for('static', filename='Favicon.ico') }}">
+<meta property="og:title" content="WCPI - Causing Chaos Since '18" />
+<meta property="og:image" content="{{ url_for('static', filename='images/llama.png') }}" />
+<meta name="Description" CONTENT="The Wescap Power Index (WCPI) is an objective ranking of skill for Fortnite player. Website currently in beta.">
+{% endblock %}
+{% block styles %}
+{{super()}}
+<style>
+    body {
+        background-image: url({{ url_for('static', filename='images/background.jpg') }});
+    }
+    @media all and (max-width: 1200px) { /* screen size until 1200px */
+        body {
+            font-size: 1.5em; /* 1.5x default size */
+        }
+    }
+    @media all and (max-width: 1000px) { /* screen size until 1000px */
+        body {
+            font-size: 1.2em; /* 1.2x default size */
+            }
+        }
+    @media all and (max-width: 500px) { /* screen size until 500px */
+        body {
+            font-size: 0.8em; /* 0.8x default size */
+        }
+    }
+</style>
+{% endblock %}
+
+
