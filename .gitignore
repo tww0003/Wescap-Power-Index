@@ -106,6 +106,6 @@ fabric.properties
 
 Fortnite/Ballers/venv/*
 Fortnite/Fortnite.wsgi
-Fortnite/config.json
+Fortnite/Ballers/config.json
 .idea/*
 Fortnite/Ballers/__pycache__/*
