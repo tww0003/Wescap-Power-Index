@@ -2,9 +2,12 @@ from flask import Flask, render_template, g, request
 from flask_bootstrap import Bootstrap
 import pymysql.cursors
 import json
+import os
 
 app = Flask(__name__)
 Bootstrap(app)
+
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
 
 @app.route('/', methods=('GET', 'POST'))
@@ -136,7 +139,7 @@ def get_better_data():
 
 
 def get_config():
-    with open('config.json') as f:
+    with open(os.path.join(__location__, 'config.json')) as f:
         data = json.load(f)
     return data
 
