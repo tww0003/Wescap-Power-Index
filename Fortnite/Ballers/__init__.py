@@ -1,6 +1,7 @@
 from flask import Flask, render_template, g, request
 from flask_bootstrap import Bootstrap
 import pymysql.cursors
+import json
 
 app = Flask(__name__)
 Bootstrap(app)
@@ -49,11 +50,16 @@ def before_req():
 
 def get_season4():
     new_result = None
+    data = get_config()
+    host = data['host']
+    db_user = data['user']
+    passwd = data['password']
+    db = data['db']
     try:
-        connection = pymysql.connect(host='localhost',
-                                     user='user',
-                                     password='password',
-                                     db='db',
+        connection = pymysql.connect(host=host,
+                                     user=db_user,
+                                     password=passwd,
+                                     db=db,
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
 
@@ -95,11 +101,17 @@ def get_season4():
 
 def get_better_data():
     the_results = None
+    data = get_config()
+    host = data['host']
+    db_user = data['user']
+    passwd = data['password']
+    db = data['db']
+
     try:
-        connection = pymysql.connect(host='localhost',
-                                     user='user',
-                                     password='password',
-                                     db='db',
+        connection = pymysql.connect(host=host,
+                                     user=db_user,
+                                     password=passwd,
+                                     db=db,
                                      charset='utf8mb4',
                                      cursorclass=pymysql.cursors.DictCursor)
 
@@ -121,6 +133,12 @@ def get_better_data():
     finally:
         connection.close()
         return sorted(the_results, key=lambda k: k['wcpi_score'])[::-1]
+
+
+def get_config():
+    with open('config.json') as f:
+        data = json.load(f)
+    return data
 
 
 if __name__ == '__main__':
