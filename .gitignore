@@ -106,3 +106,4 @@ fabric.properties
 
 Fortnite/Ballers/venv/*
 Fortnite/Fortnite.wsgi
+Fortnite/config.json
