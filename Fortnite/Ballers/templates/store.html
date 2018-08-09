@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+{{super()}}
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+{% endblock %}
+
+{% block navbar %}
+{{ macros.render_navbar('/') }}
+{% endblock %}
+
+{% block content %}
+{{super()}}
+<center><h1>COMING SOON</h1></center>
+<center><h2>$24.99 on Amazon Prime - Each shirt funds 1 month of server time.</h2></center>
+ <div class="row">
+  <div class="column">
+    <center><img src="{{ url_for('static', filename='images/front.png') }}" width="350" height="350"></center>
+    <center><h3>Front</h3></center>
+  </div>
+  <div class="column">
+      <center><img src="{{ url_for('static', filename='images/back.png') }}" width="350" height="350"><center/>
+      <center><h3>Back</h3></center>
+  </div>
+</div> {% endblock %}

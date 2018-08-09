@@ -45,6 +45,11 @@ def user():
     return render_template('user.html', json=params)
 
 
+@app.route('/store', methods=['GET'])
+def store():
+    return render_template('store.html')
+
+
 @app.before_request
 def before_req():
     g.json = get_better_data()
