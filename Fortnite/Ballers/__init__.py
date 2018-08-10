@@ -51,12 +51,6 @@ def store():
     return render_template('store.html')
 
 
-# @app.before_request
-# def before_req():
-    # g.json = get_better_data()
-    # g.season4 = get_season4()
-
-
 def get_season4():
     new_result = None
     data = get_config()
