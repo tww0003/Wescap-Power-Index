@@ -12,17 +12,17 @@ __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
-    return render_template('index.html', json=g.json)
+    return render_template('index.html', json=get_better_data())
 
 
 @app.route('/squad', methods=('GET', 'POST'))
 def a_team():
-    return render_template('ATeam.html', json=g.json)
+    return render_template('ATeam.html', json=get_better_data())
 
 
 @app.route('/formula', methods=('GET', 'POST'))
 def formula():
-    return render_template('Formula.html', json=g.json)
+    return render_template('Formula.html')
 
 
 @app.route('/watch', methods=('GET', 'POST'))
@@ -32,14 +32,15 @@ def watch():
 
 @app.route('/results', methods=('GET', 'POST'))
 def results():
-    return render_template('season4.html', json=g.season4)
+    return render_template('season4.html', json=get_season4())
 
 
 @app.route('/user', methods=('GET', 'POST'))
 def user():
     username = request.args.get('username')
     params = []
-    for item in g.json:
+    json = get_better_data()
+    for item in json:
         if item['name'] == username:
             params.append(item)
     return render_template('user.html', json=params)
@@ -50,10 +51,10 @@ def store():
     return render_template('store.html')
 
 
-@app.before_request
-def before_req():
-    g.json = get_better_data()
-    g.season4 = get_season4()
+# @app.before_request
+# def before_req():
+    # g.json = get_better_data()
+    # g.season4 = get_season4()
 
 
 def get_season4():
