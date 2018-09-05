@@ -1,14 +1,10 @@
-from flask import Flask, render_template, g, request, flash, redirect
+from flask import Flask, render_template, g, request
 from flask_bootstrap import Bootstrap
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
 import pymysql.cursors
 import json
 import os
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'you-will-never-guess'
 Bootstrap(app)
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
@@ -53,16 +49,6 @@ def user():
 @app.route('/store', methods=['GET'])
 def store():
     return render_template('store.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        flash('Login requested for user {}, remember_me={}'.format(
-            form.username.data, form.remember_me.data))
-        return redirect('/')
-    return render_template('signin.html', title='Sign In', form=form)
 
 
 def get_season4():
@@ -156,14 +142,6 @@ def get_config():
     with open(os.path.join(__location__, 'config.json')) as f:
         data = json.load(f)
     return data
-
-
-# Login form
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
 
 
 if __name__ == '__main__':
