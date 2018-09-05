@@ -33,14 +33,7 @@
 {% block content %}
 {{super()}}
     <div class="container-fluid">
-                <center><h1>WESCAP POWER INDEX FORMULA</h1></center>
-        <div class="center-this" style="background-color: white; font-size:2vw;">
-            <center><p><b>solo_ranking_value = (solo_kills/solo_matches) + ((solo_wins / solo_matches) * 50) <br/>
-            duo_ranking_value = (duo_kills/duo_matches) + ((duo_wins/duo_matches) * 25)<br/>
-            squad_ranking_value = (squad_kills/squad_matches) + ((squad_wins/squad_matches) * 12.5)<br/>
-            power_rank = ((((solo_matches/total_matches)*solo_ranking_value)
-            + ((duo_matches/total_matches)*duo_ranking_value)
-                + ((squad_matches/total_matches)*squad_ranking_value)) * 33.33)</b></p></center>
-        </div>
+        <center><h1>WESCAP POWER INDEX FORMULA</h1></center>
+        <center><img src="{{ url_for('static', filename='images/WCPIAlogrithm.png') }}" height="500"></center>
     </div>
 {% endblock %}
