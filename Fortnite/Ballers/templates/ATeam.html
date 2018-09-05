@@ -22,21 +22,21 @@
         <center><h1><img class="img-responsive" src="{{ url_for('static', filename='images/current.png') }}"/></h1></center>
         <div class="row">
             <div class="col-md-2 col-md-offset-2">
-                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + json[0]['name'] +'.jpg') }}" /></center>
-                <center><h3><a href="/user?username={{json[0]['name']}}">{{json[0]['name']}}</a></h3></center>
+                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + users[0].name +'.jpg') }}" /></center>
+                <center><h3><a href="/user?username={{users[0].name}}">{{users[0].name}}</a></h3></center>
             </div>
             <div class="col-md-2">
-                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + json[1]['name'] +'.jpg') }}" /></center>
-                <center><h3><a href="/user?username={{json[1]['name']}}">{{json[1]['name']}}</a></h3></center>
+                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + users[1].name +'.jpg') }}" /></center>
+                <center><h3><a href="/user?username={{users[1].name}}">{{users[1].name}}</a></h3></center>
             </div>
 
             <div class="col-md-2">
-                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + json[2]['name'] +'.jpg') }}" /></center>
-                <center><h3><a href="/user?username={{json[2]['name']}}">{{json[2]['name']}}</a></h3></center>
+                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + users[2].name +'.jpg') }}" /></center>
+                <center><h3><a href="/user?username={{users[2].name}}">{{users[2].name}}</a></h3></center>
             </div>
             <div class="col-md-2">
-                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + json[3]['name'] +'.jpg') }}" /></center>
-                <center><h3><a href="/user?username={{json[3]['name']}}">{{json[3]['name']}}</a></h3></center>
+                <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + users[3].name +'.jpg') }}" /></center>
+                <center><h3><a href="/user?username={{users[3].name}}">{{users[3].name}}</a></h3></center>
             </div>
         </div>
     </div>
