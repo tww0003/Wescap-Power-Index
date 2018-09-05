@@ -1,8 +1,8 @@
 import json
 import os
 import pymysql.cursors
-from Fortnite.Ballers.user import User
-from Fortnite.Ballers.stats import Stats
+from Ballers.user import User
+from Ballers.stats import Stats
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 

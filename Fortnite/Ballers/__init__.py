@@ -2,8 +2,8 @@ from flask import Flask, render_template, g, request
 from flask_bootstrap import Bootstrap
 import json
 import os
-from Fortnite.Ballers.user import User
-from Fortnite.Ballers.DatabaseHelper import DatabaseHelper
+from Ballers.user import User
+from Ballers.DatabaseHelper import DatabaseHelper
 
 app = Flask(__name__)
 Bootstrap(app)
