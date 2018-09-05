@@ -24,7 +24,7 @@
       </div>
     </nav>
 {% endmacro %}
-{% macro render_wcpi(json) %}
+{% macro render_wcpi(users) %}
     <div class="container-fluid">
         <div class="table-responsive" style="background-color: white">
             <table class="table table-striped" >
@@ -51,26 +51,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for item in json %}
+                    {% for user in users %}
                     <tr>
                         <td scope="row">{{loop.index}}</td>
-                        <td><a href="/user?username={{item['name']}}">{{item['name']}}</a></td>
-                        <td>{{item['gamer_tag']}}
-                        <td>{{item['wcpi_score']}}</td>
-                        <td>{{item['solo_kpg']}}</td>
-                        <td>{{item['duo_kpg']}}</td>
-                        <td>{{item['squad_kpg']}}</td>
-                        <td>{{item['solo_matches']}}</td>
-                        <td>{{item['duo_matches']}}</td>
-                        <td>{{item['squad_matches']}}</td>
-                        <td>{{item['matches']}}</td>
-                        <td>{{item['solo_wins']}}</td>
-                        <td>{{item['duo_wins']}}</td>
-                        <td>{{item['squad_wins']}}</td>
-                        <td>{{item['total_wins']}}</td>
-                        <td>{{(item['solo_win_percentage'] * 100)|round(2)}}</td>
-                        <td>{{(item['duo_win_percentage'] * 100)|round(2)}}</td>
-                        <td>{{(item['squad_win_percentage'] * 100)|round(2)}}</td>
+                        <td><a href="/user?username={{user.name}}">{{user.name}}</a></td>
+                        <td>{{user.gamertag}}
+                        <td>{{user.stats.wcpi_score}}</td>
+                        <td>{{user.stats.solo_kpg|round(2)}}</td>
+                        <td>{{user.stats.duo_kpg|round(2)}}</td>
+                        <td>{{user.stats.squad_kpg|round(2)}}</td>
+                        <td>{{user.stats.solo_matches|int}}</td>
+                        <td>{{user.stats.duo_matches|int}}</td>
+                        <td>{{user.stats.squad_matches|int}}</td>
+                        <td>{{user.stats.total_matches|int}}</td>
+                        <td>{{user.stats.solo_wins|int}}</td>
+                        <td>{{user.stats.duo_wins|int}}</td>
+                        <td>{{user.stats.squad_wins|int}}</td>
+                        <td>{{user.stats.total_wins|int}}</td>
+                        <td>{{(user.stats.solo_win_percentage * 100)|round(2)}}</td>
+                        <td>{{(user.stats.duo_win_percentage * 100)|round(2)}}</td>
+                        <td>{{(user.stats.squad_win_percentage * 100)|round(2)}}</td>
                     </tr>
                     {% endfor %}
                     </tbody>

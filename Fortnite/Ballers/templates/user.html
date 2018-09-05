@@ -22,11 +22,11 @@
 <center>
     <div class="row">
         <div class="col-md">
-            <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + json[0]['name'] +'.jpg') }}" width="350" height="350" /></center>
-            <center><h3>{{json[0]['name']}}</h3></center>
+            <center><img class="img-responsive" src="{{ url_for('static', filename='images/' + users[0].name +'.jpg') }}" width="350" height="350" /></center>
+            <center><h3>{{users[0].name}}</h3></center>
         </div>
     </div>
 </center>
-{{ macros.render_wcpi(json) }}
+{{ macros.render_wcpi(users) }}
 {% endblock %}
 
