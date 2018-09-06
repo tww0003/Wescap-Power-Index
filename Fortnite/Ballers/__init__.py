@@ -77,5 +77,6 @@ def get_season_four_data():
             users.append(my_user)
     return sorted(users, key=lambda k: k.stats.wcpi_score)[::-1]
 
+
 if __name__ == '__main__':
     app.run(debug=False)
