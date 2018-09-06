@@ -84,10 +84,9 @@ def get_current_data():
 
 def get_season_four_data():
     dbh = DatabaseHelper()
-    user_ids = dbh.get_all_user_ids()
     users = []
-    for user_id in user_ids:
-        my_user = dbh.get_user(user_id, season=4)
+    temp = dbh.get_season_four()
+    for my_user in temp:
         if my_user.stats is not None:
             users.append(my_user)
     return sorted(users, key=lambda k: k.stats.wcpi_score)[::-1]
